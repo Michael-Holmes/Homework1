@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Homework1</string>
+    <string name="btnNewString">Create New</string>
+    <string name="btnEditString">Edit Contact</string>
+    <string name="btnDeleteString">Delete Contact</string>
+    <string name="btnDisplayString">Display Contact</string>
+    <string name="btnFinishString">Finish</string>
+    <string name="title_activity_create_new_contact">Create New Contact</string>
+    <string name="btnSaveString">Save</string>
+    <string name="etFirstString">First</string>
+    <string name="etLastString">Last</string>
+    <string name="etCompanyString">Company</string>
+    <string name="etPhoneString">Phone</string>
+    <string name="etEmailString">Email</string>
+    <string name="etURLString">URL</string>
+    <string name="etAddressString">Address</string>
+    <string name="etBirthdayString">Birthday</string>
+    <string name="etNicknameString">Nickname</string>
+    <string name="etFacebookString">Facebook Profile URL</string>
+    <string name="etTwitterString">Twitter Profile URL</string>
+    <string name="etSkypeString">Skype</string>
+    <string name="etYouTubeString">YouTube Channel</string>
+</resources>

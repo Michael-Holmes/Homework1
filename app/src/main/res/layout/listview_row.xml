@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivListItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:id="@+id/contactItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvListItemName"
+            android:layout_width="match_parent"
+            android:layout_weight="6"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvListItemPhone"
+            android:layout_width="match_parent"
+            android:layout_weight="4"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

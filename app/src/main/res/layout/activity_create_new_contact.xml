@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CreateNewContact">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="345dp" />
+
+            <EditText
+                android:id="@+id/etFirst"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etFirstString"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etLast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etLastString"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etCompany"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etCompanyString"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etPhoneString"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etEmailString"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etURL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etURLString"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etAddressString"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etBirthdayString"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etNickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etNicknameString"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etFacebook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etFacebookString"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etTwitter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etTwitterString"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etSkype"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etSkypeString"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etYouTube"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etYouTubeString"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btnSaveString"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
