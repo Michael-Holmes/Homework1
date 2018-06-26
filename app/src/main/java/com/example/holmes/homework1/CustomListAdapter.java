@@ -2,6 +2,7 @@ package com.example.holmes.homework1;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,11 @@ public class CustomListAdapter extends ArrayAdapter<Contact> {
 
         viewHolder.name.setText(contact.getFirstName() + " " + contact.getLastName());
         viewHolder.phone.setText(contact.getPhone());
-        viewHolder.imageView.setImageBitmap(contact.getProfilePicture());
+        if(contact.getProfilePicture() != null) {
+            viewHolder.imageView.setImageBitmap(contact.getProfilePicture());
+        } else {
+            viewHolder.imageView.setImageResource(R.drawable.ic_launcher_background);
+        }
         return view;
 
     };

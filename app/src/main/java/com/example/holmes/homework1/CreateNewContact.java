@@ -58,14 +58,16 @@ public class CreateNewContact extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(profilePicture.getDrawable() != null) {
+                    BitmapDrawable draw = (BitmapDrawable) profilePicture.getDrawable();
+                    Bitmap imgBitmap = draw.getBitmap();
+                    newContact.setProfilePicture(imgBitmap);
+                }
 
-                BitmapDrawable draw = (BitmapDrawable) profilePicture.getDrawable();
-                Bitmap imgBitmap = draw.getBitmap();
 
                 newContact.setFirstName(etFirst.getText().toString());
                 newContact.setLastName(etLastName.getText().toString());
                 newContact.setPhone(etPhone.getText().toString());
-                newContact.setProfilePicture(imgBitmap);
                 newContact.setCompany(etCompany.getText().toString());
                 newContact.setEmail(etEmail.getText().toString());
                 newContact.setURL(etURL.getText().toString());
