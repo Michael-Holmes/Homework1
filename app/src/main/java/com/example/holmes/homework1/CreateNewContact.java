@@ -3,6 +3,8 @@ package com.example.holmes.homework1;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -56,11 +58,14 @@ public class CreateNewContact extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                BitmapDrawable draw = (BitmapDrawable) profilePicture.getDrawable();
+                Bitmap imgBitmap = draw.getBitmap();
+
                 newContact.setFirstName(etFirst.getText().toString());
                 newContact.setLastName(etLastName.getText().toString());
                 newContact.setPhone(etPhone.getText().toString());
-
-
+                newContact.setProfilePicture(imgBitmap);
                 newContact.setCompany(etCompany.getText().toString());
                 newContact.setEmail(etEmail.getText().toString());
                 newContact.setURL(etURL.getText().toString());

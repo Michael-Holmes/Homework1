@@ -29,7 +29,7 @@ public class ContactList extends AppCompatActivity {
         if(prevIntent.hasExtra("contact")){
             contact = prevIntent.getParcelableExtra("contact");
             contacts.add(contact);
-            Toast.makeText(context, "added contact" + contacts.get(0).getLastName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "added contact " + contacts.get(0).getLastName(), Toast.LENGTH_SHORT).show();
         }
 
         CustomListAdapter listAdapter = new CustomListAdapter(this, R.layout.listview_row, contacts);

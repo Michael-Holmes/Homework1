@@ -18,9 +18,9 @@
             android:orientation="vertical">
 
             <ImageButton
+                android:id="@+id/ibProfilePicture"
                 android:layout_width="match_parent"
-                android:layout_height="345dp"
-                android:id="@+id/ibProfilePicture"/>
+                android:layout_height="345dp" />
 
             <EditText
                 android:id="@+id/etFirst"
