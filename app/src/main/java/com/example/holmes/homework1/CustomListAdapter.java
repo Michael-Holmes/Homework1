@@ -1,6 +1,7 @@
 package com.example.holmes.homework1;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,49 +11,42 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CustomListAdapter extends ArrayAdapter {
+public class CustomListAdapter extends ArrayAdapter<Contact> {
+    Context context;
 
-
-    /**
-     * Example code can be found here: https://appsandbiscuits.com/listview-tutorial-android-12-ccef4ead27cc
-    */
-    private final Activity context;
-    private final Integer[] imageIDarray;
-    private final String[] nameArray;
-    private final String[] phonearray;
-
-
-
-
-
-
-    public CustomListAdapter(Activity context, String[] nameArrayParam, String[] infoArrayParam, Integer[] imageIDArrayParam){
-
-        super(context,R.layout.listview_row , nameArrayParam);
-        this.context=context;
-        this.imageIDarray = imageIDArrayParam;
-        this.nameArray = nameArrayParam;
-        this.phonearray = infoArrayParam;
+    public CustomListAdapter(Activity context, int resource, ArrayList<Contact> contacts){
+        super(context, resource, contacts);
+        this.context = context;
 
     }
 
-
-
+    @Override
     public View getView(int position, View view, ViewGroup parent) {
-        LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.listview_row, null,true);
+        Contact contact = getItem(position);
+        ViewHolder viewHolder;
 
-        //this code gets references to objects in the listview_row.xml file
-        TextView nameTextField = (TextView) rowView.findViewById(R.id.tvListItemName);
-        TextView infoTextField = (TextView) rowView.findViewById(R.id.tvListItemPhone);
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.ivListItem);
+        if(view == null){
+            view = LayoutInflater.from(context).inflate(R.layout.listview_row, parent, false);
+            viewHolder = new ViewHolder();
+            viewHolder.name = view.findViewById(R.id.tvListItemName);
+            viewHolder.phone = view.findViewById(R.id.tvListItemPhone);
+            viewHolder.imageView = view.findViewById(R.id.ivListItem);
+            view.setTag(viewHolder);
+        } else{
+            viewHolder = (ViewHolder) view.getTag();
+        }
 
-        //this code sets the values of the objects to values from the arrays
-        nameTextField.setText(nameArray[position]);
-        infoTextField.setText(phonearray[position]);
-        imageView.setImageResource(imageIDarray[position]);
-
-        return rowView;
+        viewHolder.name.setText(contact.getFirstName() + " " + contact.getLastName());
+        viewHolder.phone.setText(contact.getPhone());
+        viewHolder.imageView.setImageBitmap(contact.getProfilePicture());
+        return view;
 
     };
+
+
+    private static class ViewHolder{
+        ImageView imageView;
+        TextView name;
+        TextView phone;
+    }
 }

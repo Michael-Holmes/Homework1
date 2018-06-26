@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("Contacts");
-        ArrayList<Contact> contactList = new ArrayList<Contact>();
+
 
         createButton = findViewById(R.id.btnNew);
         displayButton = findViewById(R.id.btnDisplay);

@@ -1,54 +1,50 @@
 package com.example.holmes.homework1;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class ContactList extends AppCompatActivity {
 
     ListView listView;
-
-    //Example array
-    String[] nameArray = {"Octopus","Pig","Sheep","Rabbit","Snake","Spider" };
-
-    //Example array
-    String[] infoArray = {
-            "8 tentacled monster",
-            "Delicious in rolls",
-            "Great for jumpers",
-            "Nice in a stew",
-            "Great for shoes",
-            "Scary."
-    };
-
-    //Example array
-    Integer[] imageArray = {R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background};
+    static ArrayList<Contact> contacts = new ArrayList<Contact>();
+    Context context;
+    Contact contact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_list);
         setTitle("Contact List");
+        context = getApplicationContext();
+        Intent prevIntent = getIntent();
 
-        CustomListAdapter listAdapter = new CustomListAdapter(this, nameArray, infoArray, imageArray);
-        listView = (ListView) findViewById(R.id.lvContactList);
+        if(prevIntent.hasExtra("contact")){
+            contact = prevIntent.getParcelableExtra("contact");
+            contacts.add(contact);
+            Toast.makeText(context, "added contact" + contacts.get(0).getLastName(), Toast.LENGTH_SHORT).show();
+        }
+
+        CustomListAdapter listAdapter = new CustomListAdapter(this, R.layout.listview_row, contacts);
+        listView = findViewById(R.id.lvContactList);
         listView.setAdapter(listAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ContactList.this, Contact.class);
-                String message = nameArray[position];
+
+                Toast.makeText(context, contacts.get(position).getPhone(), Toast.LENGTH_SHORT).show();
+                /*Intent intent = new Intent(ContactList.this, Contact.class);
+                Contact contact = contacts.get(position);
                 intent.putExtra("animal", message);
-                startActivity(intent);
+                startActivity(intent);*/
             }
         });
 
