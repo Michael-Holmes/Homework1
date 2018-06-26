@@ -33,6 +33,12 @@ public class Contact implements Parcelable{
 
     }
 
+    public Contact(String firstName, String lastName, String phone){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+    }
+
     @Override
     public int describeContents(){
         return 0;
