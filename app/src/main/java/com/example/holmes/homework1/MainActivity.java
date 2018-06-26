@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
         displayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this,ContactList.class);
+                intent.putExtra("BUTTON_PRESS",1);
+                startActivity(intent);
             }
         });
 
@@ -45,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this,ContactList.class);
+                intent.putExtra("BUTTON_PRESS",2);
+                startActivity(intent);
             }
         });
 
@@ -53,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this,ContactList.class);
+                intent.putExtra("BUTTON_PRESS",3);
+                startActivity(intent);
             }
         });
 
