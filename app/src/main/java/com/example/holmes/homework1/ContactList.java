@@ -40,7 +40,32 @@ public class ContactList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Toast.makeText(context, contacts.get(position).getBirthday(), Toast.LENGTH_SHORT).show();
+
+                int btnPress = getIntent().getIntExtra("BUTTON_PRESS",0);
+                Toast.makeText(context, contacts.get(position).getBirthday() + "      " + btnPress, Toast.LENGTH_SHORT).show();
+
+                String activityName = "";
+                Intent btnIntent;
+
+                switch(btnPress){
+                    case 1:
+                        activityName = "DISPLAY";
+                        btnIntent = new Intent(ContactList.this,DisplayContact.class);
+                        btnIntent.putExtra("CONTACT",contacts.get(position));
+                        break;
+                    case 2:
+                        activityName = "UPDATE";
+                        //btnIntent = new Intent(ContactList.this,UpdateContact.class);
+                        //btnIntent.putExtra("CONTACT",contacts.get(position));
+                        break;
+                    case 3:
+                        activityName = "DELETE";
+                        /**
+                         * Add code here to create the delete functionality
+                         * (remove(position)
+                         */
+                        break;
+                }
                 /*Intent intent = new Intent(ContactList.this, Contact.class);
                 Contact contact = contacts.get(position);
                 intent.putExtra("animal", message);
