@@ -22,7 +22,7 @@ import java.util.Calendar;
 public class CreateNewContact extends AppCompatActivity {
     Button saveButton;
     ImageButton profilePicture;
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int REQUEST_IMAGE_CAPTURE = 200;
     Context context;
 
     @Override

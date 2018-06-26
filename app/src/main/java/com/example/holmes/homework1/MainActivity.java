@@ -10,6 +10,11 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     Button createButton, displayButton, updateButton, deleteButton, finishButton;
+    public static final int CREATE = 0;
+    public static final int DISPLAY = 1;
+    public static final int EDIT = 2;
+    public static final int DELETE = 3;
+    public static final String CONTACT = "contact";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,ContactList.class);
-                intent.putExtra("BUTTON_PRESS",1);
+                intent.putExtra("BUTTON_PRESS", DISPLAY);
                 startActivity(intent);
             }
         });
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,ContactList.class);
-                intent.putExtra("BUTTON_PRESS",2);
+                intent.putExtra("BUTTON_PRESS", EDIT);
                 startActivity(intent);
             }
         });
@@ -58,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,ContactList.class);
-                intent.putExtra("BUTTON_PRESS",3);
+                intent.putExtra("BUTTON_PRESS", DELETE);
                 startActivity(intent);
             }
         });

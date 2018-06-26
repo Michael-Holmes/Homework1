@@ -36,7 +36,7 @@ public class DisplayContact extends AppCompatActivity {
         youtube = findViewById(R.id.tvYouTubeDisplay);
 
         Intent prevIntent = getIntent();
-        Contact contact = prevIntent.getParcelableExtra("contact");
+        Contact contact = prevIntent.getParcelableExtra(MainActivity.CONTACT);
 
         if (!isEmpty(contact.getFirstName())) {
             firstName.setVisibility(View.VISIBLE);

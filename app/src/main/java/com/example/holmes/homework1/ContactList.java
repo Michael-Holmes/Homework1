@@ -48,17 +48,17 @@ public class ContactList extends AppCompatActivity {
                 Intent btnIntent;
 
                 switch(btnPress){
-                    case 1:
+                    case MainActivity.DISPLAY:
                         activityName = "DISPLAY";
                         btnIntent = new Intent(ContactList.this,DisplayContact.class);
-                        btnIntent.putExtra("CONTACT",contacts.get(position));
+                        btnIntent.putExtra(MainActivity.CONTACT ,contacts.get(position));
                         break;
-                    case 2:
+                    case MainActivity.EDIT:
                         activityName = "UPDATE";
                         //btnIntent = new Intent(ContactList.this,UpdateContact.class);
                         //btnIntent.putExtra("CONTACT",contacts.get(position));
                         break;
-                    case 3:
+                    case MainActivity.DELETE:
                         activityName = "DELETE";
                         /**
                          * Add code here to create the delete functionality
