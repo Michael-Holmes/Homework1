@@ -29,7 +29,7 @@ public class ContactList extends AppCompatActivity {
         if(prevIntent.hasExtra("contact")){
             contact = prevIntent.getParcelableExtra("contact");
             contacts.add(contact);
-            Toast.makeText(context, "added contact " + contacts.get(0).getLastName() + " Phone: " + contacts.get(0).getPhone(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "added contact " + contacts.get(0).getLastName(), Toast.LENGTH_SHORT).show();
         }
 
         CustomListAdapter listAdapter = new CustomListAdapter(this, R.layout.listview_row, contacts);
@@ -40,15 +40,7 @@ public class ContactList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                /**
-                 * IF (btn clicked in MainActivity)
-                 * THEN (change On Click Listener based on selection)
-                 */
-
-
-
-
-                Toast.makeText(context, contacts.get(position).getPhone(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, contacts.get(position).getBirthday(), Toast.LENGTH_SHORT).show();
                 /*Intent intent = new Intent(ContactList.this, Contact.class);
                 Contact contact = contacts.get(position);
                 intent.putExtra("animal", message);
