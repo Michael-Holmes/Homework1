@@ -1,5 +1,6 @@
 package com.example.holmes.homework1;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,10 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 public class CreateNewContact extends AppCompatActivity {
     Button saveButton;
@@ -43,9 +47,15 @@ public class CreateNewContact extends AppCompatActivity {
         final EditText etTwitter = findViewById(R.id.etTwitter);
         final EditText etSkype = findViewById(R.id.etSkype);
         final EditText etYoutube = findViewById(R.id.etYouTube);
-
-
         final Contact newContact = new Contact();
+
+        final DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month++;
+                etBirthday.setText(month + "-" + day + "-" + year);
+            }
+        };
 
         profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +63,34 @@ public class CreateNewContact extends AppCompatActivity {
                 getPhoto();
             }
         });
+
+        etBirthday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int year, month, day;
+
+                Calendar calendar = Calendar.getInstance();
+                if(etBirthday.getText() == null || etBirthday.getText().toString().isEmpty()) {
+                    year = calendar.get(Calendar.YEAR);
+                    month = calendar.get(Calendar.MONTH);
+                    day = calendar.get(Calendar.DAY_OF_MONTH);
+                } else {
+                    String birthday = etBirthday.getText().toString();
+                    String[] date = birthday.split("-");
+                    year = Integer.valueOf(date[2]) ;
+                    month = Integer.valueOf(date[0]);
+                    day = Integer.valueOf(date[1]);
+                }
+                DatePickerDialog dialog = new DatePickerDialog(
+                    CreateNewContact.this,
+                        android.R.style.Theme_Holo_Dialog_MinWidth,
+                        dateSetListener,
+                        year, month, day);
+
+                dialog.show();
+            }
+        });
+
 
 
         saveButton.setOnClickListener(new View.OnClickListener() {

@@ -40,7 +40,7 @@ public class ContactList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Toast.makeText(context, contacts.get(position).getPhone(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, contacts.get(position).getBirthday(), Toast.LENGTH_SHORT).show();
                 /*Intent intent = new Intent(ContactList.this, Contact.class);
                 Contact contact = contacts.get(position);
                 intent.putExtra("animal", message);
