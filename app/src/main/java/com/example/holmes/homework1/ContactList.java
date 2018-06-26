@@ -25,12 +25,12 @@ public class ContactList extends AppCompatActivity {
     };
 
     //Example array
-    Integer[] imageArray = {R.drawable.octopus,
-            R.drawable.pig,
-            R.drawable.sheep,
-            R.drawable.rabbit,
-            R.drawable.snake,
-            R.drawable.spider};
+    Integer[] imageArray = {R.drawable.ic_launcher_background,
+            R.drawable.ic_launcher_background,
+            R.drawable.ic_launcher_background,
+            R.drawable.ic_launcher_background,
+            R.drawable.ic_launcher_background,
+            R.drawable.ic_launcher_background};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class ContactList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ContactList.this, DetailActivity.class);
+                Intent intent = new Intent(ContactList.this, Contact.class);
                 String message = nameArray[position];
                 intent.putExtra("animal", message);
                 startActivity(intent);
