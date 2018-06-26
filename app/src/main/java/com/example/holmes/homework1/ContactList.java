@@ -1,5 +1,6 @@
 package com.example.holmes.homework1;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -44,8 +45,13 @@ public class ContactList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent intent = new Intent(ContactList.this, DetailActivity.class);
+                String message = nameArray[position];
+                intent.putExtra("animal", message);
+                startActivity(intent);
             }
         });
+
+
     }
 }
