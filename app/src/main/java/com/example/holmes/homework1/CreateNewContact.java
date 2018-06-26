@@ -161,6 +161,10 @@ public class CreateNewContact extends AppCompatActivity {
             Toast.makeText(context, "Please enter in a valid phone number", Toast.LENGTH_SHORT).show();
             return false;
         }
+        if (!contact.getEmail().isEmpty() && !contact.getEmail().matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")) {
+            Toast.makeText(context, "Please enter in a valid email address", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         return true;
     }
 }
