@@ -42,9 +42,9 @@ public class Contact implements Parcelable{
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(firstName);
         dest.writeString(lastName);
-        dest.writeString(email);
         dest.writeString(company);
         dest.writeString(phone);
+        dest.writeString(email);
         dest.writeString(URL);
         dest.writeString(address);
         dest.writeString(birthday);
