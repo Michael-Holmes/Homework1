@@ -25,6 +25,7 @@ public class CreateNewContact extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 200;
     Context context;
     Contact newContact;
+    Contact editContact;
     Boolean isEdit;
 
     @Override
@@ -53,7 +54,6 @@ public class CreateNewContact extends AppCompatActivity {
         if(getIntent().hasExtra("UPDATE")) {
             isEdit = true;
             setTitle("Edit Contact");
-            Contact editContact;
             editContact = getIntent().getParcelableExtra("CONTACT");
             etFirst.setText(editContact.getFirstName());
             etLastName.setText(editContact.getLastName());
@@ -151,9 +151,6 @@ public class CreateNewContact extends AppCompatActivity {
                 if (isValid(newContact)) {
                     Intent intent = new Intent(CreateNewContact.this, ContactList.class);
                     intent.putExtra("contact", newContact);
-                    if(isEdit){
-                        intent.putExtra("BUTTON_PRESS", MainActivity.EDIT);
-                    }
                     startActivity(intent);
                     finish();
                 }
@@ -202,5 +199,14 @@ public class CreateNewContact extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(isEdit){
+            ContactList.contacts.add(editContact);
+        }
+        finish();
     }
 }
