@@ -28,11 +28,12 @@ public class ContactList extends AppCompatActivity {
         context = getApplicationContext();
         Intent prevIntent = getIntent();
 
-        if(prevIntent.hasExtra("contact")){
+        if (prevIntent.hasExtra("contact")) {
             contact = prevIntent.getParcelableExtra("contact");
             contacts.add(contact);
             Toast.makeText(context, "added contact " + contacts.get(0).getLastName(), Toast.LENGTH_SHORT).show();
         }
+
 
         final CustomListAdapter listAdapter = new CustomListAdapter(this, R.layout.listview_row, contacts);
         listView = findViewById(R.id.lvContactList);
@@ -43,24 +44,25 @@ public class ContactList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-                int btnPress = getIntent().getIntExtra("BUTTON_PRESS",0);
+                int btnPress = getIntent().getIntExtra("BUTTON_PRESS", 0);
 
                 String activityName = "";
                 Intent btnIntent;
                 final int pos = position;
 
-                switch(btnPress){
+                switch (btnPress) {
                     case MainActivity.DISPLAY:
                         activityName = "DISPLAY";
-                        btnIntent = new Intent(ContactList.this,DisplayContact.class);
-                        btnIntent.putExtra(MainActivity.CONTACT ,contacts.get(position));
+                        btnIntent = new Intent(ContactList.this, DisplayContact.class);
+                        btnIntent.putExtra(MainActivity.CONTACT, contacts.get(position));
                         startActivity(btnIntent);
                         break;
                     case MainActivity.EDIT:
                         activityName = "UPDATE";
-                        btnIntent = new Intent(ContactList.this,CreateNewContact.class);
-                        btnIntent.putExtra("CONTACT",contacts.get(position));
-                        btnIntent.putExtra("UPDATE","UPDATE");
+                        btnIntent = new Intent(ContactList.this, CreateNewContact.class);
+                        btnIntent.putExtra("CONTACT", contacts.get(position));
+                        btnIntent.putExtra("UPDATE", "UPDATE");
+                        contacts.remove(position);
                         startActivity(btnIntent);
                         break;
                     case MainActivity.DELETE:
@@ -69,7 +71,7 @@ public class ContactList extends AppCompatActivity {
                         alert.setMessage("Are you sure you would like to delete this contact?");
 
                         alert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int which) {
+                            public void onClick(DialogInterface dialog, int which) {
                                 contacts.remove(pos);
                                 listAdapter.notifyDataSetChanged();
                             }

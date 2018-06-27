@@ -21,9 +21,11 @@ import java.util.Calendar;
 
 public class CreateNewContact extends AppCompatActivity {
     Button saveButton;
-    ImageButton profilePicture;
+    ImageView profilePicture;
     static final int REQUEST_IMAGE_CAPTURE = 200;
     Context context;
+    Contact newContact;
+    Boolean isEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +47,13 @@ public class CreateNewContact extends AppCompatActivity {
         final EditText etTwitter = findViewById(R.id.etTwitter);
         final EditText etSkype = findViewById(R.id.etSkype);
         final EditText etYoutube = findViewById(R.id.etYouTube);
-        final Contact newContact = new Contact();
 
-        Contact editContact;
 
 
         if(getIntent().hasExtra("UPDATE")) {
+            isEdit = true;
             setTitle("Edit Contact");
+            Contact editContact;
             editContact = getIntent().getParcelableExtra("CONTACT");
             etFirst.setText(editContact.getFirstName());
             etLastName.setText(editContact.getLastName());
@@ -67,9 +69,12 @@ public class CreateNewContact extends AppCompatActivity {
             etSkype.setText(editContact.getSkype());
             etYoutube.setText(editContact.getYoutube());
             profilePicture.setImageBitmap(editContact.getProfilePicture());
+            newContact = editContact;
 
         }else{
+            isEdit = false;
             setTitle("Create New Contact");
+            newContact = new Contact();
         }
 
         context = getApplicationContext();
@@ -146,6 +151,9 @@ public class CreateNewContact extends AppCompatActivity {
                 if (isValid(newContact)) {
                     Intent intent = new Intent(CreateNewContact.this, ContactList.class);
                     intent.putExtra("contact", newContact);
+                    if(isEdit){
+                        intent.putExtra("BUTTON_PRESS", MainActivity.EDIT);
+                    }
                     startActivity(intent);
                     finish();
                 }
