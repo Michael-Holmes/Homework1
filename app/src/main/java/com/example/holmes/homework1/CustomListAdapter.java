@@ -18,8 +18,8 @@ public class CustomListAdapter extends ArrayAdapter<Contact> {
     public CustomListAdapter(Activity context, int resource, ArrayList<Contact> contacts){
         super(context, resource, contacts);
         this.context = context;
-
     }
+
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {

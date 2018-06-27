@@ -1,6 +1,8 @@
 package com.example.holmes.homework1;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,7 +34,7 @@ public class ContactList extends AppCompatActivity {
             Toast.makeText(context, "added contact " + contacts.get(0).getLastName(), Toast.LENGTH_SHORT).show();
         }
 
-        CustomListAdapter listAdapter = new CustomListAdapter(this, R.layout.listview_row, contacts);
+        final CustomListAdapter listAdapter = new CustomListAdapter(this, R.layout.listview_row, contacts);
         listView = findViewById(R.id.lvContactList);
         listView.setAdapter(listAdapter);
 
@@ -42,16 +44,17 @@ public class ContactList extends AppCompatActivity {
 
 
                 int btnPress = getIntent().getIntExtra("BUTTON_PRESS",0);
-                Toast.makeText(context, contacts.get(position).getBirthday() + "      " + btnPress, Toast.LENGTH_SHORT).show();
 
                 String activityName = "";
                 Intent btnIntent;
+                final int pos = position;
 
                 switch(btnPress){
                     case MainActivity.DISPLAY:
                         activityName = "DISPLAY";
                         btnIntent = new Intent(ContactList.this,DisplayContact.class);
                         btnIntent.putExtra(MainActivity.CONTACT ,contacts.get(position));
+                        startActivity(btnIntent);
                         break;
                     case MainActivity.EDIT:
                         activityName = "UPDATE";
@@ -60,10 +63,22 @@ public class ContactList extends AppCompatActivity {
                         break;
                     case MainActivity.DELETE:
                         activityName = "DELETE";
-                        /**
-                         * Add code here to create the delete functionality
-                         * (remove(position)
-                         */
+                        AlertDialog.Builder alert = new AlertDialog.Builder(ContactList.this);
+                        alert.setMessage("Are you sure you would like to delete this contact?");
+
+                        alert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int which) {
+                                contacts.remove(pos);
+                                listAdapter.notifyDataSetChanged();
+                            }
+                        });
+
+                        alert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                        alert.show();
                         break;
                 }
                 /*Intent intent = new Intent(ContactList.this, Contact.class);
