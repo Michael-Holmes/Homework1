@@ -29,8 +29,6 @@ public class CreateNewContact extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_contact);
-        setTitle("Create New Contact");
-        context = getApplicationContext();
 
         saveButton = findViewById(R.id.btnSave);
         profilePicture = findViewById(R.id.ibProfilePicture);
@@ -48,6 +46,35 @@ public class CreateNewContact extends AppCompatActivity {
         final EditText etSkype = findViewById(R.id.etSkype);
         final EditText etYoutube = findViewById(R.id.etYouTube);
         final Contact newContact = new Contact();
+
+        Contact editContact;
+
+
+        if(getIntent().hasExtra("UPDATE")) {
+            setTitle("Edit Contact");
+            editContact = getIntent().getParcelableExtra("CONTACT");
+            etFirst.setText(editContact.getFirstName());
+            etLastName.setText(editContact.getLastName());
+            etCompany.setText(editContact.getCompany());
+            etPhone.setText(editContact.getPhone());
+            etEmail.setText(editContact.getEmail());
+            etURL.setText(editContact.getURL());
+            etAddress.setText(editContact.getAddress());
+            etBirthday.setText(editContact.getBirthday());
+            etNickname.setText(editContact.getNickname());
+            etFacebook.setText(editContact.getFacebook());
+            etTwitter.setText(editContact.getTwitter());
+            etSkype.setText(editContact.getSkype());
+            etYoutube.setText(editContact.getYoutube());
+            profilePicture.setImageBitmap(editContact.getProfilePicture());
+
+        }else{
+            setTitle("Create New Contact");
+        }
+
+        context = getApplicationContext();
+
+
 
         final DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override

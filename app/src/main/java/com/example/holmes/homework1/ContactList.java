@@ -58,8 +58,10 @@ public class ContactList extends AppCompatActivity {
                         break;
                     case MainActivity.EDIT:
                         activityName = "UPDATE";
-                        //btnIntent = new Intent(ContactList.this,UpdateContact.class);
-                        //btnIntent.putExtra("CONTACT",contacts.get(position));
+                        btnIntent = new Intent(ContactList.this,CreateNewContact.class);
+                        btnIntent.putExtra("CONTACT",contacts.get(position));
+                        btnIntent.putExtra("UPDATE","UPDATE");
+                        startActivity(btnIntent);
                         break;
                     case MainActivity.DELETE:
                         activityName = "DELETE";
@@ -81,6 +83,7 @@ public class ContactList extends AppCompatActivity {
                         alert.show();
                         break;
                 }
+
                 /*Intent intent = new Intent(ContactList.this, Contact.class);
                 Contact contact = contacts.get(position);
                 intent.putExtra("animal", message);
