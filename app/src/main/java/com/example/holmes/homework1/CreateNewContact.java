@@ -120,6 +120,7 @@ public class CreateNewContact extends AppCompatActivity {
                     Intent intent = new Intent(CreateNewContact.this, ContactList.class);
                     intent.putExtra("contact", newContact);
                     startActivity(intent);
+                    finish();
                 }
 
             }

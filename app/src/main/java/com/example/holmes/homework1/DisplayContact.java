@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,7 +13,7 @@ public class DisplayContact extends AppCompatActivity {
     Context context;
     TextView firstName, lastName, company, phone, email, url,
             address, birthday, nickname, facebook, twitter, skype, youtube;
-
+    ImageView profilePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class DisplayContact extends AppCompatActivity {
         setTitle("Contact Display");
         context = getApplicationContext();
 
+        profilePicture = findViewById(R.id.ivProfileDisplay);
         firstName = findViewById(R.id.tvFirstNameDisplay);
         lastName = findViewById(R.id.tvLastNameDisplay);
         company = findViewById(R.id.tvCompanyDisplay);
@@ -37,6 +39,11 @@ public class DisplayContact extends AppCompatActivity {
 
         Intent prevIntent = getIntent();
         Contact contact = prevIntent.getParcelableExtra(MainActivity.CONTACT);
+
+        if(contact.getProfilePicture() != null){
+            profilePicture.setVisibility(View.VISIBLE);
+            profilePicture.setImageBitmap(contact.getProfilePicture());
+        }
 
         if (!isEmpty(contact.getFirstName())) {
             firstName.setVisibility(View.VISIBLE);
